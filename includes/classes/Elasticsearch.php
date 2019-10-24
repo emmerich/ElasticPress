@@ -203,11 +203,8 @@ class Elasticsearch {
 
 		$path = apply_filters( 'ep_query_request_path', $path, $index, $type, $query, $query_args );
 
-		$encoded = json_encode( $query, JSON_PRETTY_PRINT ) // phpcs:ignore WordPress.WP.AlternativeFunctions.json_encode_json_encode
-		echo $encoded
-
 		$request_args = array(
-			'body'    => $encoded,
+			'body'    => json_encode( $query ), // phpcs:ignore WordPress.WP.AlternativeFunctions.json_encode_json_encode
 			'method'  => 'POST',
 			'headers' => array(
 				'Content-Type' => 'application/json',
